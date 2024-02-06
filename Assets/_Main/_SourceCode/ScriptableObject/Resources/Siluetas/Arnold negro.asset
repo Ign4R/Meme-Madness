@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216bb5be84cb4bf4c93f32bbeef96621, type: 3}
+  m_Name: Arnold negro
+  m_EditorClassIdentifier: 
+  normal: {fileID: 21300000, guid: d7fdff48d95362d4fbf62045e91b7763, type: 3}
+  silhouette: {fileID: 21300000, guid: 5d86be705702e9a40935fe76a4fb02c7, type: 3}
+  incorrectAnswers:
+  - {fileID: 21300000, guid: 8bfca1bbae718d74ea78dd443733e7ba, type: 3}
+  - {fileID: 21300000, guid: ef2eee773fe0eab45b039403d40e5c57, type: 3}
+  - {fileID: 21300000, guid: cfc1f032a6a28a04f9590b8a3148f4c3, type: 3}

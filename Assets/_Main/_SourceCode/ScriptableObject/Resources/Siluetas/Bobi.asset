@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216bb5be84cb4bf4c93f32bbeef96621, type: 3}
+  m_Name: Bobi
+  m_EditorClassIdentifier: 
+  normal: {fileID: 21300000, guid: 21e806fabcd1dc14ba93e1bd481ef68b, type: 3}
+  silhouette: {fileID: 21300000, guid: 4114f2d071d42804bbd9c88450372e7c, type: 3}
+  incorrectAnswers:
+  - {fileID: 21300000, guid: d9e6bbacda0a4ab4f8a4b3fc6e438130, type: 3}
+  - {fileID: 21300000, guid: 4e0b0dfcd0250db4b8a728ce3c4bd818, type: 3}
+  - {fileID: 21300000, guid: 1a9a58bb64130a045b9d78037e408359, type: 3}
