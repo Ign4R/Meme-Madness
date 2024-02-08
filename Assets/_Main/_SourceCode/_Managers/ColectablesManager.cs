@@ -71,7 +71,6 @@ public class ColectablesManager : MonoBehaviour
 
     public void ResetColectablesMenu()
     {
-        Load();
         for (int i = 0; i < colectablesObjects.Length; i++)
         {
             if(arrays.colectablesIsUnlocked[i] == false)
@@ -96,6 +95,7 @@ public class ColectablesManager : MonoBehaviour
         arrays.colectablesId = loadedArrays.id;
         arrays.colectablesIsUnlocked = loadedArrays.isUnlocked;
         arrays.remainingUnlocks = loadedArrays.remainingUnlocks;
+        ResetColectablesMenu();
     }
 
 }
