@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
@@ -6,6 +5,7 @@ using UnityEngine;
 
 public class PutTheMemeManager : MonoBehaviour
 {
+    public Vector2 posMemesEnemies;
     [SerializeField] private List<MemeSlot> _slotPrefabs;
     [SerializeField] private Meme _memePrefab;
     [SerializeField] private Transform _slotParent, _pieceParent;
@@ -89,13 +89,16 @@ public class PutTheMemeManager : MonoBehaviour
         }
     }
 
+    /// hace que la rana vaya hacia arriba 2 unidades <summary>
+
+    // rana.position.y= 4;
     public void CleanScreen()
     {
         if(counter == randomSet.Count)
         {
             for (int i = 0; i < images.Count; i++)
             {
-                images[i].transform.position = new Vector2(0, 2);
+                images[i].transform.position = posMemesEnemies;
             }
             for (int i = 0; i < memes.Count; i++)
             {

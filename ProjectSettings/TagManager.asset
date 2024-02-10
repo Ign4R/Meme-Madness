@@ -8,6 +8,9 @@ TagManager:
   - Player
   - Rigby
   - Mordecai
+  - Draggable
+  - OrangePlayer
+  - BluePlayer
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - UI
   - Ground
   - Player
-  - 
+  - Transition
   - 
   - 
   - 

@@ -9,9 +9,6 @@ public class ManagerBenson : MonoBehaviour
     public TextMeshProUGUI timer;
     private int _caughtBalls;
     private float _objective;
-    [SerializeField] private int pointsForVictory;
-    [SerializeField] private GameObject controlsScreen;
-    [SerializeField] private float controlsShowingTime;
     [SerializeField] private TextMeshProUGUI score;
     public DifficultyValuesScriptableObject difficultyValues;
     [SerializeField] GameObject ballSpawner;
@@ -45,7 +42,7 @@ public class ManagerBenson : MonoBehaviour
 
         if (remainingTime <= 0)
         {
-            if (EndGame()) Win();
+            if (ConditionDefeat()) ConditionAddPoints();
             else
             {
                 GameManager.instance.GameOver();
@@ -65,15 +62,15 @@ public class ManagerBenson : MonoBehaviour
         AudioManager.AudioInstance.PlaySFX("catchBall");
     }
 
-    bool EndGame()
+    bool ConditionDefeat()
     {
         return _caughtBalls >= _objective;
     }
 
-    private void Win()
+    private void ConditionAddPoints()
     {
         GameManager.instance.LoadNewLevel();
-        GameManager.instance.AddPoints(pointsForVictory);
+        GameManager.instance.AddPoints(_caughtBalls++);
         Debug.Log("Win");
     }
 
