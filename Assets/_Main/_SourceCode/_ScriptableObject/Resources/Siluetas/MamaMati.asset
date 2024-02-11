@@ -15,6 +15,6 @@ MonoBehaviour:
   normal: {fileID: 21300000, guid: 4e0b0dfcd0250db4b8a728ce3c4bd818, type: 3}
   silhouette: {fileID: 21300000, guid: 853cba97428922648b3b81661b4835c3, type: 3}
   incorrectAnswers:
-  - {fileID: 21300000, guid: 7f3e15b9f4800f6488eb050d30f80232, type: 3}
+  - {fileID: 21300000, guid: cfc1f032a6a28a04f9590b8a3148f4c3, type: 3}
   - {fileID: 21300000, guid: 586bb2e4620dc244bb13eb8ce4fe0cc4, type: 3}
-  - {fileID: 21300000, guid: d7fdff48d95362d4fbf62045e91b7763, type: 3}
+  - {fileID: 21300000, guid: 8bfca1bbae718d74ea78dd443733e7ba, type: 3}

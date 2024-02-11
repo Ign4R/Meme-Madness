@@ -21,10 +21,10 @@ public class BensonController : MonoBehaviour
     [SerializeField] private GameObject orangeBallPrefab;
 
     [SerializeField] private float timerStep = 3f;
+    private bool activateSpawner;
     private static bool END_TIME_TUTORIAL;
 
     public bool EndTimeTutorial { get => END_TIME_TUTORIAL; set => END_TIME_TUTORIAL = value; }
-    public float TimerStep { get => timerStep; set => timerStep = value; }
 
     private void Start()
     {
@@ -43,6 +43,7 @@ public class BensonController : MonoBehaviour
         timerStep -= Time.deltaTime;
         if (timerStep <= 0f)
         {
+            activateSpawner = true;
             AudioManager.AudioInstance.PlaySFX("bensonsus");
             timerStep = 4f;
             if (END_TIME_TUTORIAL) return;
@@ -60,7 +61,7 @@ public class BensonController : MonoBehaviour
 
     private void AttemptToSpawnBall()
     {
-        if (timerStep <= 0f || END_TIME_TUTORIAL) 
+        if (activateSpawner) 
         {
             if (Time.time >= _lastBallSpawned + ballSpawnCd )
             {

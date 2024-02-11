@@ -16,16 +16,16 @@ MonoBehaviour:
   variables:
   - variableName: movementVelocity
     value:
-    - 1
     - 2
+    - 2.5
     - 3
   - variableName: fallSpeed
     value:
     - 3
-    - 6
-    - 9
-  - variableName: objective
-    value:
     - 5
-    - 10
-    - 15
+    - 7
+  - variableName: cooldown
+    value:
+    - 3
+    - 2
+    - 1

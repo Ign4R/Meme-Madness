@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class HorneaMemesManager : MonoBehaviour
 {
     [SerializeField] private float maxCorrectAnswers;
-    [SerializeField] private int scoreIncrease;
+    [SerializeField] private int scoreIncrease=10;
     [SerializeField] private float minigameTimer;
     [SerializeField] private float timerBetweenPhrases;
     [SerializeField] private float incorrectTimer;
@@ -59,16 +59,9 @@ public class HorneaMemesManager : MonoBehaviour
         if (minigameTimer <= 0)
         {
             DisableButtons();
-            if (correctAnswers < maxCorrectAnswers)
-            {
-                GameManager.instance.GameOver();
-            }
-            else
-            {
-                GameManager.instance.AddPoints(makeMemeScore);
-                GameManager.instance.LoadNewLevel();
-            }
-          
+            GameManager.instance.AddPoints(makeMemeScore);
+            GameManager.instance.LoadNewLevel();
+
         }
     }
 

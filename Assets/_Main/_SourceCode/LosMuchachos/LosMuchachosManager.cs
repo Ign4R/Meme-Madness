@@ -11,7 +11,7 @@ public class LosMuchachosManager : MonoBehaviour
     public GameObject _controls;    
     public static LosMuchachosManager instance;
     public float remainingTime;
-    private int _caughtBalls;
+    [SerializeField] private int _scoreIncrease = 50;
     private float _objective;
     [SerializeField] private TextMeshProUGUI score;
     public DifficultyValuesScriptableObject difficultyValues;
@@ -38,7 +38,7 @@ public class LosMuchachosManager : MonoBehaviour
             if (values.minigameName == "Benson") difficultyValues = values;
 
         foreach (MultipleValueVariable val in difficultyValues.variables)
-            if (val.variableName == "objective") _objective = val.value[GameManager.instance.currentRound - 1];
+            if (val.variableName == "cooldown") benson.ballSpawnCd = val.value[GameManager.instance.currentRound - 1];
 
         foreach (MultipleValueVariable val in difficultyValues.variables)
             if (val.variableName == "movementVelocity") benson.movementVelocity = val.value[GameManager.instance.currentRound - 1];
@@ -58,8 +58,7 @@ public class LosMuchachosManager : MonoBehaviour
 
             if (remainingTime <= 0)
             {
-                ExitMiniGame();
-                /*Lose();*/
+                GameTimeOver();
             }
 
         }
@@ -67,22 +66,20 @@ public class LosMuchachosManager : MonoBehaviour
 
     public void CaughtSuccess()
     {
-        _caughtBalls++;
-        pointsCollected = 8 * _caughtBalls;
-        score.text= _caughtBalls.ToString();
+        pointsCollected += _scoreIncrease;
+        score.text = pointsCollected.ToString();
         AudioManager.AudioInstance.PlaySFX("catchBall");
     }
 
     bool ConditionDefeat()
     {
-        return _caughtBalls >= _objective;
+        return _scoreIncrease >= _objective;
     }
 
-    private void ExitMiniGame()
-    {
-      
-        GameManager.instance.LoadNewLevel();
+    private void GameTimeOver()
+    {     
         GameManager.instance.AddPoints(pointsCollected);
+        GameManager.instance.LoadNewLevel();
         Debug.Log("Win");
     }
 

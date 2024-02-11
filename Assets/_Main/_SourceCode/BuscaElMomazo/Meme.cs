@@ -38,8 +38,8 @@ public class Meme : MonoBehaviour
         {
             transform.position = _slot.transform.position;
             _slot.Placed();
-            PutTheMemeManager._PutTheMemeInstance.currentPoints++;
-            PutTheMemeManager._PutTheMemeInstance.counter++;
+            BuscaElMomazo.instance.PlacedSucess();
+            BuscaElMomazo.instance.CleanScreen();
             _placed = true;
         }
         else

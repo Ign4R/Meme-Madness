@@ -12,7 +12,7 @@ public class SiluememeManager : MonoBehaviour
     [SerializeField] private float timerBetweenGuesses;
     [SerializeField] private float incorrectTimer;
     [SerializeField] private float questionTimer;
-    [SerializeField] private int scoreIncrease;
+    [SerializeField] private int scoreIncrease = 20;
     [SerializeField] private Image normalImage;
     [SerializeField] private SpriteRenderer silhouette;
     [SerializeField] private GameObject question;
@@ -54,16 +54,8 @@ public class SiluememeManager : MonoBehaviour
         if(minigameTimer <= 0)
         {
             DisableButtons();
-            if(correctGuesses < maxCorrectGuesses)
-            {
-                GameManager.instance.GameOver();
-                //restar vida
-            }
-            else
-            {
-                GameManager.instance.AddPoints(sillouetteScore);
-                GameManager.instance.LoadNewLevel();
-            }
+            GameManager.instance.AddPoints(sillouetteScore);
+            GameManager.instance.LoadNewLevel();
 
         }
     }

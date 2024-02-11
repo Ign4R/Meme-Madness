@@ -2,23 +2,27 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
-public class PutTheMemeManager : MonoBehaviour
+public class BuscaElMomazo : MonoBehaviour
 {
+    private int counter;
     public Vector2 posMemesEnemies;
     [SerializeField] private List<MemeSlot> _slotPrefabs;
     [SerializeField] private Meme _memePrefab;
     [SerializeField] private Transform _slotParent, _pieceParent;
     public Slider timerBar;
+    public TextMeshProUGUI _score;
     public float timer, gameDuration;
-    public float memesToSpawn;
-    public int counter, currentPoints;
+    public float maxMemes;
+    [SerializeField] private int scoreIncrease= 30;
     public float maxObjective;
 
-    public List<MemeSlot> randomSet;
+    public List<MemeSlot> listSlots;
     Meme spawnedPiece;
     MemeSlot spawnedSlot;
-    public static PutTheMemeManager _PutTheMemeInstance;
+    public static BuscaElMomazo instance;
 
     public List<GameObject> images = new List<GameObject>();
 
@@ -26,18 +30,19 @@ public class PutTheMemeManager : MonoBehaviour
     public List<Meme> memes = new List<Meme>();
     public List<MemeSlot> memeSlots = new List<MemeSlot>();
     private DifficultyValuesScriptableObject difficultyValues;
+    private int _pointsCollected;
 
     private void Awake()
     {
-        if (_PutTheMemeInstance == null)
+        if (instance == null)
         {
-            _PutTheMemeInstance = this;
+            instance = this;
         }
         else
         {
             Destroy(gameObject);
         }
-        Spawn();
+ 
     }
 
     private void Start()
@@ -51,16 +56,17 @@ public class PutTheMemeManager : MonoBehaviour
 
         foreach (MultipleValueVariable slots in difficultyValues.variables)
             if (slots.variableName == "slots")
-                memesToSpawn = slots.value[GameManager.instance.currentRound - 1];
+                maxMemes = slots.value[GameManager.instance.currentRound - 1];
+        Spawn();
     }
 
     void Spawn()
     {
-        randomSet = _slotPrefabs.OrderBy(s => Random.value).Take((int)memesToSpawn).ToList();
+        listSlots = _slotPrefabs.OrderBy(s => Random.value).Take((int)maxMemes).ToList();
 
-        for (int i = 0; i < randomSet.Count; i++)
+        for (int i = 0; i < listSlots.Count; i++)
         {
-            spawnedSlot = Instantiate(randomSet[i], _slotParent.GetChild(i).position, Quaternion.identity);
+            spawnedSlot = Instantiate(listSlots[i], _slotParent.GetChild(i).position, Quaternion.identity);
             spawnedPiece = Instantiate(_memePrefab, _pieceParent.GetChild(i).position, Quaternion.identity);
             memes.Add(spawnedPiece);
             memeSlots.Add(spawnedSlot);
@@ -72,20 +78,14 @@ public class PutTheMemeManager : MonoBehaviour
     {
         timer += Time.deltaTime;
         GameTimer();
-        //CleanScreen();
-        TimeOut();
+        GameTimeOver();
     }
-    public void TimeOut()
+    public void GameTimeOver()
     {
         if(timer > gameDuration)
         {
-            if (currentPoints < maxObjective) 
-            {
-                //restar vida
-            }
-       
+            GameManager.instance.AddPoints(_pointsCollected);
             GameManager.instance.LoadNewLevel();
-            GameManager.instance.AddPoints(currentPoints);
         }
     }
 
@@ -94,8 +94,8 @@ public class PutTheMemeManager : MonoBehaviour
     // rana.position.y= 4;
     public void CleanScreen()
     {
-        print("Clean Screen");
-        if(counter == randomSet.Count)
+        counter++;
+        if (counter == maxMemes)
         {
             for (int i = 0; i < images.Count; i++)
             {
@@ -106,13 +106,20 @@ public class PutTheMemeManager : MonoBehaviour
                 memes[i].gameObject.SetActive(false);
                 memeSlots[i].gameObject.SetActive(false);
             }
-
-            counter = 0;
             Spawn();
+            counter = 0;
         }
+   
     }
     public void GameTimer()
     {
         timerBar.value = timer / gameDuration;
+    }
+
+    public void PlacedSucess()
+    {
+        _pointsCollected += scoreIncrease;
+        _score.text = _pointsCollected.ToString();
+        AudioManager.AudioInstance.PlaySFX("Coin");
     }
 }
