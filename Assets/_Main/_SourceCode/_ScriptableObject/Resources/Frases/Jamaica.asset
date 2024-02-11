@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7f800047cddbfe4193c35fd50efdc53, type: 3}
-  m_Name: Impostos
+  m_Name: Jamaica
   m_EditorClassIdentifier: 
-  memeImage: {fileID: 21300000, guid: 8f1fadf86abf733468a6980ed69e788e, type: 3}
-  originalPhrase: Evasao de impostos
-  incompletePhrase: EVASAO DE
-  correctWord: IMPOSTOS
+  memeImage: {fileID: 21300000, guid: acc49bba56dc8744db947eb6749a2a3d, type: 3}
+  originalPhrase: COCA DE JAMAICA
+  incompletePhrase: COCA DE...
+  correctWord: JAMAICA
   incorrectWords:
-  - MARISCOS
-  - MACACOS
-  - MARLEYS
+  - MANAOS
+  - MARLEY
+  - PERON

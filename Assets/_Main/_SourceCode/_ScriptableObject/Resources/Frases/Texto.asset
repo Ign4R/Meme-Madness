@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7f800047cddbfe4193c35fd50efdc53, type: 3}
-  m_Name: Jamaica
+  m_Name: Texto
   m_EditorClassIdentifier: 
-  memeImage: {fileID: 21300000, guid: acc49bba56dc8744db947eb6749a2a3d, type: 3}
-  originalPhrase: COCA DE JAMAICA
-  incompletePhrase: COCA DE
-  correctWord: JAMAICA
+  memeImage: {fileID: 21300000, guid: a1d2777702fe52d458a4ae6346cac03d, type: 3}
+  originalPhrase: MUCHO TEXTO
+  incompletePhrase: MUCHO...
+  correctWord: TEXTO
   incorrectWords:
-  - MANAOS
-  - MARLEY
-  - PERON
+  - NEGRO
+  - PARAGUAYO
+  - BOLIVIANO

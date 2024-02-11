@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Guess : MonoBehaviour
+public class SiluememeManager : MonoBehaviour
 {
     private GuessBase[] _base;
     [SerializeField] private float maxCorrectGuesses;
@@ -79,7 +79,7 @@ public class Guess : MonoBehaviour
         return _base[random];
     }
 
-    public void CorrectGuess()
+    public void ChoiceSucess()
     {
         ClearListeners();
         AudioManager.AudioInstance.PlaySFX("bien");
@@ -162,7 +162,7 @@ public class Guess : MonoBehaviour
         {
             if (buttons[i] == buttons[randomButton])
             {
-                buttons[i].OnMouseClick.AddListener(CorrectGuess);
+                buttons[i].OnMouseClick.AddListener(ChoiceSucess);
                 buttonsSprites[i].sprite = currentGuess.CorrectAnswer;
                 //buttons[i].SpriteRenderer.sprite = currentGuess.CorrectAnswer;
  

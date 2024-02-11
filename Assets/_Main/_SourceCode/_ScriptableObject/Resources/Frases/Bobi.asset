@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   memeImage: {fileID: 21300000, guid: e52533aabb0b6b24282d346a87df3567, type: 3}
   originalPhrase: 'BLOQUEADO POR BOBI '
-  incompletePhrase: BLOQUEADO POR
+  incompletePhrase: BLOQUEADO POR...
   correctWord: BOBI
   incorrectWords:
   - GIL

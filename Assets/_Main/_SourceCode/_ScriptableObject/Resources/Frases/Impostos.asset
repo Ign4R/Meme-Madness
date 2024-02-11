@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7f800047cddbfe4193c35fd50efdc53, type: 3}
-  m_Name: Texto
+  m_Name: Impostos
   m_EditorClassIdentifier: 
-  memeImage: {fileID: 21300000, guid: a1d2777702fe52d458a4ae6346cac03d, type: 3}
-  originalPhrase: Mucho texto
-  incompletePhrase: MUCHO
-  correctWord: TEXTO
+  memeImage: {fileID: 21300000, guid: 8f1fadf86abf733468a6980ed69e788e, type: 3}
+  originalPhrase: EVASAO DE IMPOSTOS
+  incompletePhrase: EVASAO DE...
+  correctWord: IMPOSTOS
   incorrectWords:
-  - NEGRO
-  - PARAGUAYO
-  - BOLIVIANO
+  - MARISCOS
+  - MACACOS
+  - MARLEYS

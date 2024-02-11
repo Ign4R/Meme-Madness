@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Duendes
   m_EditorClassIdentifier: 
   memeImage: {fileID: 21300000, guid: 8b3c526988a447243a5c0a42c88bf8b0, type: 3}
-  originalPhrase: A esta hora salen duendes
-  incompletePhrase: A ESTA HORA SALEN
+  originalPhrase: A ESTA HORA SALEN DUENDES
+  incompletePhrase: A ESTA HORA SALEN...
   correctWord: DUENDES
   incorrectWords:
   - PATOS

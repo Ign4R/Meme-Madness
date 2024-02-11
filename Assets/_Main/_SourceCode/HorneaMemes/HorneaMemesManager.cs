@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ManagerGuessPhrase : MonoBehaviour
+public class HorneaMemesManager : MonoBehaviour
 {
     [SerializeField] private float maxCorrectAnswers;
     [SerializeField] private int scoreIncrease;
@@ -22,6 +22,7 @@ public class ManagerGuessPhrase : MonoBehaviour
     [SerializeField] private CustomButton[] buttons;
     [SerializeField] private TMP_Text[] buttonsText;
     private PhraseData[] phraseData;
+    private List<PhraseData> remainings;
     private PhraseData currentPhrase;
     private int makeMemeScore;
     private float correctAnswers;
@@ -31,6 +32,7 @@ public class ManagerGuessPhrase : MonoBehaviour
     private void Start()
     {
         phraseData = Resources.LoadAll<PhraseData>("Frases");
+        remainings = new List<PhraseData>(phraseData);
 
         foreach (DifficultyValuesScriptableObject values in GameManager.instance.minigamesDifficultyValues)
             if (values.minigameName == "MakeMeme")
@@ -72,11 +74,23 @@ public class ManagerGuessPhrase : MonoBehaviour
 
     public PhraseData GetRandomPhrase()
     {
-        var random = Random.Range(0, phraseData.Length);
-        return phraseData[random];
+        if (remainings.Count == 0)
+        {
+            ResetIndices();
+        }
+
+        var randomIndex = Random.Range(0, remainings.Count);
+        var randomPhrase = remainings[randomIndex];
+        remainings.RemoveAt(randomIndex);
+
+        return randomPhrase;
+    }
+    private void ResetIndices()
+    {
+        remainings.AddRange(phraseData);
     }
 
-    public void CorrectPhrase()
+    public void CompleteSucess()
     {
         AudioManager.AudioInstance.PlaySFX("bien");
         ClearListeners();
@@ -131,7 +145,7 @@ public class ManagerGuessPhrase : MonoBehaviour
         {
             if (buttons[i] == buttons[indexRandom])
             {
-                buttons[i].OnMouseClick.AddListener(CorrectPhrase);
+                buttons[i].OnMouseClick.AddListener(CompleteSucess);
                 originalPhrase.text = currentPhrase.OriginalPhrase;
                 buttonsText[i].text = currentPhrase.ChooseCorrect;
                 continue;
@@ -172,4 +186,5 @@ public class ManagerGuessPhrase : MonoBehaviour
             buttons[i].gameObject.SetActive(true);
         }
     }
+
 }

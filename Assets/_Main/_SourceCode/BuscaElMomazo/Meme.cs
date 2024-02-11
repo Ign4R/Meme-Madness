@@ -25,17 +25,11 @@ public class Meme : MonoBehaviour
         if (_placed) return;
         if (!_dragging) return;
 
-        var mousePosition = GetMousePos();
-        transform.position = mousePosition - _offset;
+        Vector3 mousePosition = GetMousePos();
+        Vector3 normalizedDirection = (mousePosition - transform.position).normalized;
+        transform.position += normalizedDirection * Time.deltaTime * 10f; // Puedes ajustar la velocidad según sea necesario
     }
-    private void OnMouseDown()
-    {
-        if (GameManager.instance.isPaused == true) return;
-        _dragging = true;
-        AudioManager.AudioInstance.PlaySFX("PickUp");
-        //_source.PlayOneShot(_pickUpClip);
-        _offset = GetMousePos() - (Vector2)transform.position;
-    }
+
 
     private void OnMouseUp()
     {
@@ -56,6 +50,7 @@ public class Meme : MonoBehaviour
             _dragging = false;
         }
     }
+  
     Vector2 GetMousePos()
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);

@@ -72,12 +72,12 @@ public class PutTheMemeManager : MonoBehaviour
     {
         timer += Time.deltaTime;
         GameTimer();
-        CleanScreen();
+        //CleanScreen();
         TimeOut();
     }
     public void TimeOut()
     {
-        if(timer > 15)
+        if(timer > gameDuration)
         {
             if (currentPoints < maxObjective) 
             {
@@ -94,6 +94,7 @@ public class PutTheMemeManager : MonoBehaviour
     // rana.position.y= 4;
     public void CleanScreen()
     {
+        print("Clean Screen");
         if(counter == randomSet.Count)
         {
             for (int i = 0; i < images.Count; i++)

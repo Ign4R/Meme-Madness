@@ -20,7 +20,12 @@ public class BensonController : MonoBehaviour
     [SerializeField] private GameObject blueBallPrefab;
     [SerializeField] private GameObject orangeBallPrefab;
 
-    private float timerStep = 3f;
+    [SerializeField] private float timerStep = 3f;
+    private static bool END_TIME_TUTORIAL;
+
+    public bool EndTimeTutorial { get => END_TIME_TUTORIAL; set => END_TIME_TUTORIAL = value; }
+    public float TimerStep { get => timerStep; set => timerStep = value; }
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -39,7 +44,9 @@ public class BensonController : MonoBehaviour
         if (timerStep <= 0f)
         {
             AudioManager.AudioInstance.PlaySFX("bensonsus");
-            timerStep = 3f;
+            timerStep = 4f;
+            if (END_TIME_TUTORIAL) return;
+            END_TIME_TUTORIAL = true;
         }
     }
 
@@ -53,11 +60,15 @@ public class BensonController : MonoBehaviour
 
     private void AttemptToSpawnBall()
     {
-        if (Time.time >= _lastBallSpawned + ballSpawnCd)
+        if (timerStep <= 0f || END_TIME_TUTORIAL) 
         {
-            SpawnBall();
-            AudioManager.AudioInstance.PlaySFX("spamball");
+            if (Time.time >= _lastBallSpawned + ballSpawnCd )
+            {
+                SpawnBall();
+                AudioManager.AudioInstance.PlaySFX("spamball");
+            }
         }
+        
     }
 
     private void SpawnBall()

@@ -84,6 +84,8 @@ MonoBehaviour:
   ballSpawnCd: 1.5
   blueBallPrefab: {fileID: 221396552202451710, guid: ceb9ba2f5962e044dac4f9b69367a0dc, type: 3}
   orangeBallPrefab: {fileID: 221396552202451710, guid: ea4dd636954479e4f999fc46fcf7b5d3, type: 3}
+  timerStep: 3
+  canSpawn: 0
 --- !u!50 &4057797508132739376
 Rigidbody2D:
   serializedVersion: 4
