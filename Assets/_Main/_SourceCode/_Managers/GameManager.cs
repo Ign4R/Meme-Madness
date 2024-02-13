@@ -24,11 +24,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            LoadNewLevel();
-        }
-
         if (Input.GetKeyDown(KeyCode.Escape) && !pauseMenu.activeInHierarchy && SceneManagerScript.instance.scene != 0)
             Pause();
         else if (Input.GetKeyDown(KeyCode.Escape) && pauseMenu.activeInHierarchy)

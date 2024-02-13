@@ -203,7 +203,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81322499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 0, z: 9}
+  m_LocalPosition: {x: 0, y: 0, z: 9}
   m_LocalScale: {x: 0.7644, y: 0.5371006, z: 0.7644}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -493,7 +493,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519192830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 0, z: 8}
+  m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 0.5479, y: 0.5479, z: 0.5479}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1452,7 +1452,7 @@ GameObject:
   - component: {fileID: 1576624607}
   - component: {fileID: 1576624608}
   m_Layer: 0
-  m_Name: pescado
+  m_Name: pikachu
   m_TagString: Draggable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1518,7 +1518,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576624601}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.22, y: 0, z: 7}
+  m_LocalPosition: {x: 0, y: 0, z: 7}
   m_LocalScale: {x: 0.8754871, y: 0.67084056, z: 0.7396191}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2094,7 +2094,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111855749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0383, y: 0, z: 6}
+  m_LocalPosition: {x: 0, y: 0, z: 6}
   m_LocalScale: {x: 0.8117726, y: 0.67395735, z: 0.8197}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2195,7 +2195,6 @@ MonoBehaviour:
   - {fileID: 3557115084801820302, guid: 44dd5cada12788a45befb8eb9512b78b, type: 3}
   - {fileID: 3557115084801820302, guid: 8e997a1809d5ae04eb13187b91626031, type: 3}
   - {fileID: 3557115084801820302, guid: ba901e57bd188e045b32fd311c66a8bc, type: 3}
-  - {fileID: 3557115084801820302, guid: 37098f6924b2f6c4b84876ba15489d73, type: 3}
   - {fileID: 3557115084801820302, guid: 0bd97376e2b55224f81c18f0441b2aff, type: 3}
   - {fileID: 3557115084801820302, guid: fe42618f5f9e1b84dbb269332ecc3b07, type: 3}
   - {fileID: 3557115084801820302, guid: a58fde657aed66048917eda00d48e1a7, type: 3}
