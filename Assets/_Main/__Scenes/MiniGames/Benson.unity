@@ -862,11 +862,11 @@ MonoBehaviour:
   _controls: {fileID: 1689093061}
   remainingTime: 22
   _scoreIncrease: 30
-  score: {fileID: 1023117719}
+  _uiScore: {fileID: 1023117719}
   difficultyValues: {fileID: 11400000, guid: 7b23d76161c7b36429eb859b75fab281, type: 2}
   benson: {fileID: 1605562817}
   sliderTimer: {fileID: 1522873205}
-  pointsCollected: 0
+  _pointsCollected: 0
 --- !u!4 &761803051
 Transform:
   m_ObjectHideFlags: 0
@@ -1134,7 +1134,7 @@ GameObject:
   - component: {fileID: 1023117720}
   - component: {fileID: 1023117719}
   m_Layer: 5
-  m_Name: Score
+  m_Name: ScoreValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1600,7 +1600,7 @@ GameObject:
   - component: {fileID: 1356162725}
   - component: {fileID: 1356162724}
   m_Layer: 5
-  m_Name: TitleScore
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

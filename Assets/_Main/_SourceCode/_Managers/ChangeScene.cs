@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChangeScene : MonoBehaviour
 {
-    void NextScene()
+    public void NextScene()
     {
         GameManager.instance.LoadNewLevel();
     }

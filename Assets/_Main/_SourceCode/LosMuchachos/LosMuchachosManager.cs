@@ -13,11 +13,11 @@ public class LosMuchachosManager : MonoBehaviour
     public float remainingTime;
     [SerializeField] private int _scoreIncrease = 50;
     private float _objective;
-    [SerializeField] private TextMeshProUGUI score;
+    [SerializeField] private TextMeshProUGUI _uiScore;
     public DifficultyValuesScriptableObject difficultyValues;
     [SerializeField] BensonController benson;
     [SerializeField] private Slider sliderTimer;
-    public int pointsCollected;
+    public int _pointsCollected;
 
     private void Awake()
     {     
@@ -33,7 +33,11 @@ public class LosMuchachosManager : MonoBehaviour
         else Destroy(gameObject);
 
         FillSlide();
-
+        SetDifficulty();
+        RefreshScore();
+    }
+    public void SetDifficulty()
+    {
         foreach (DifficultyValuesScriptableObject values in GameManager.instance.minigamesDifficultyValues)
             if (values.minigameName == "Benson") difficultyValues = values;
 
@@ -42,9 +46,11 @@ public class LosMuchachosManager : MonoBehaviour
 
         foreach (MultipleValueVariable val in difficultyValues.variables)
             if (val.variableName == "movementVelocity") benson.movementVelocity = val.value[GameManager.instance.currentRound - 1];
-
     }
-
+    public void RefreshScore()
+    {
+        _uiScore.text = GameManager.instance.MainScored.ToString();
+    }
     private void Update()
     {
         if (benson.EndTimeTutorial)
@@ -66,19 +72,14 @@ public class LosMuchachosManager : MonoBehaviour
 
     public void CaughtSuccess()
     {
-        pointsCollected += _scoreIncrease;
-        score.text = pointsCollected.ToString();
+        _pointsCollected += _scoreIncrease;
+        _uiScore.text = (_pointsCollected + GameManager.instance.MainScored).ToString();
         AudioManager.AudioInstance.PlaySFX("catchBall");
-    }
-
-    bool ConditionDefeat()
-    {
-        return _scoreIncrease >= _objective;
     }
 
     private void GameTimeOver()
     {     
-        GameManager.instance.AddPoints(pointsCollected);
+        GameManager.instance.AddPoints(_pointsCollected);
         GameManager.instance.LoadNewLevel();
         Debug.Log("Win");
     }

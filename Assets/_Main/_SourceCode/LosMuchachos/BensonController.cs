@@ -15,7 +15,6 @@ public class BensonController : MonoBehaviour
     private float _distance;
 
     [SerializeField] private GameObject ballSpawnPointRef;
-    private float _lastBallSpawned;
     public float ballSpawnCd;
     [SerializeField] private GameObject blueBallPrefab;
     [SerializeField] private GameObject orangeBallPrefab;
@@ -23,6 +22,7 @@ public class BensonController : MonoBehaviour
     [SerializeField] private float timerStep = 3f;
     private bool activateSpawner;
     private static bool END_TIME_TUTORIAL;
+    private float timeSinceLastSpawn;
 
     public bool EndTimeTutorial { get => END_TIME_TUTORIAL; set => END_TIME_TUTORIAL = value; }
 
@@ -31,7 +31,6 @@ public class BensonController : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _middleReferencePoint = Instantiate(new GameObject(), new Vector2(transform.position.x - range/2, transform.position.y), transform.rotation).GetComponent<Transform>();
         _movingRight = 1;
-        _lastBallSpawned = Time.time;
         _animator = GetComponentInChildren<Animator>();
     }
 
@@ -63,7 +62,10 @@ public class BensonController : MonoBehaviour
     {
         if (activateSpawner) 
         {
-            if (Time.time >= _lastBallSpawned + ballSpawnCd )
+            timeSinceLastSpawn -= Time.deltaTime;
+
+
+            if (timeSinceLastSpawn < 1) 
             {
                 SpawnBall();
                 AudioManager.AudioInstance.PlaySFX("spamball");
@@ -74,7 +76,7 @@ public class BensonController : MonoBehaviour
 
     private void SpawnBall()
     {
-        _lastBallSpawned = Time.time;
+        timeSinceLastSpawn = ballSpawnCd;
         var r = Random.Range(0, 10);
         if (r < 5)
         {

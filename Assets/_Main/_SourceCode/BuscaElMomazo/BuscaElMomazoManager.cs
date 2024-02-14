@@ -3,9 +3,8 @@ using System.Linq;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
-public class BuscaElMomazo : MonoBehaviour
+public class BuscaElMomazoManager : MonoBehaviour
 {
     private int counter;
     public Vector2 posMemesEnemies;
@@ -13,16 +12,16 @@ public class BuscaElMomazo : MonoBehaviour
     [SerializeField] private Meme _memePrefab;
     [SerializeField] private Transform _slotParent, _pieceParent;
     public Slider timerBar;
-    public TextMeshProUGUI _score;
+    public TextMeshProUGUI _uiScore;
     public float timer, gameDuration;
     public float maxMemes;
-    [SerializeField] private int scoreIncrease= 30;
+    [SerializeField] private int scoreIncrease = 30;
     public float maxObjective;
 
     public List<MemeSlot> listSlots;
     Meme spawnedPiece;
     MemeSlot spawnedSlot;
-    public static BuscaElMomazo instance;
+    public static BuscaElMomazoManager instance;
 
     public List<GameObject> images = new List<GameObject>();
 
@@ -42,10 +41,21 @@ public class BuscaElMomazo : MonoBehaviour
         {
             Destroy(gameObject);
         }
- 
+
     }
 
     private void Start()
+    {
+        RefreshScore();
+        SetDifficulty();
+        Spawn();
+
+    }
+    public void RefreshScore()
+    {
+        _uiScore.text = GameManager.instance.MainScored.ToString();
+    }
+    public void SetDifficulty()
     {
         foreach (DifficultyValuesScriptableObject values in GameManager.instance.minigamesDifficultyValues)
             if (values.minigameName == "FindMeme")
@@ -57,9 +67,7 @@ public class BuscaElMomazo : MonoBehaviour
         foreach (MultipleValueVariable slots in difficultyValues.variables)
             if (slots.variableName == "slots")
                 maxMemes = slots.value[GameManager.instance.currentRound - 1];
-        Spawn();
     }
-
     void Spawn()
     {
         listSlots = _slotPrefabs.OrderBy(s => Random.value).Take((int)maxMemes).ToList();
@@ -88,10 +96,6 @@ public class BuscaElMomazo : MonoBehaviour
             GameManager.instance.LoadNewLevel();
         }
     }
-
-    /// hace que la rana vaya hacia arriba 2 unidades <summary>
-
-    // rana.position.y= 4;
     public void CleanScreen()
     {
         counter++;
@@ -119,7 +123,7 @@ public class BuscaElMomazo : MonoBehaviour
     public void PlacedSucess()
     {
         _pointsCollected += scoreIncrease;
-        _score.text = _pointsCollected.ToString();
+        _uiScore.text = (_pointsCollected + GameManager.instance.MainScored).ToString();
         AudioManager.AudioInstance.PlaySFX("Coin");
     }
 }

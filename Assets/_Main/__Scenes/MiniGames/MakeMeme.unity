@@ -1815,7 +1815,7 @@ MonoBehaviour:
   timerBetweenPhrases: 0.4
   incorrectTimer: 1
   numberOfMistakes: 3
-  scoreText: {fileID: 1563330507}
+  _uiScore: {fileID: 1563330507}
   minigameTimerText: {fileID: 77312079}
   originalPhrase: {fileID: 258322233}
   correct: {fileID: 1445297265}
@@ -1936,7 +1936,7 @@ GameObject:
   - component: {fileID: 505222125}
   - component: {fileID: 505222124}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2807,7 +2807,7 @@ GameObject:
   - component: {fileID: 1563330506}
   - component: {fileID: 1563330507}
   m_Layer: 5
-  m_Name: Points
+  m_Name: ScoreValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

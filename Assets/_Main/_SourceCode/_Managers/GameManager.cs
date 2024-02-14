@@ -8,11 +8,12 @@ public class GameManager : MonoBehaviour
     public int currentGame;
     private bool _tutorial;
     public int currentRound;
-    public int points;
+    public int MainScored { get; private set; }
     public bool isPaused = false;
     public List<string> games;
     public DifficultyValuesScriptableObject[] minigamesDifficultyValues;
     [SerializeField] private GameObject pauseMenu;
+    public int[] scorePerRound;
 
     private void Start()
     {
@@ -24,6 +25,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            LoadNewLevel();
+        }
         if (Input.GetKeyDown(KeyCode.Escape) && !pauseMenu.activeInHierarchy && SceneManagerScript.instance.scene != 0)
             Pause();
         else if (Input.GetKeyDown(KeyCode.Escape) && pauseMenu.activeInHierarchy)
@@ -43,6 +48,10 @@ public class GameManager : MonoBehaviour
     void SetNewRound()
     {
         currentGame = 0;
+        if (_tutorial)
+        {
+            _tutorial = false;
+        }
         if (currentRound == 3)
         {
             Win();
@@ -56,21 +65,34 @@ public class GameManager : MonoBehaviour
     }
     public void LoadNewLevel()
     {
-        if (currentGame == 4)         //En la ronda 1, los minijuegos se juegan en orden.
-        {
-            if (_tutorial) _tutorial = false;
-            SetNewRound();
+        if (currentGame == 4)        //En la ronda 1, los minijuegos se juegan en orden.
+        {               
+            if (MainScored >= scorePerRound[currentRound - 1])
+            {
+                SetNewRound();
+            }
+            else
+            {
+                SceneManager.LoadScene("GameOver");
+            }
         }
         else
         {
             currentGame++;
-            if (_tutorial) SceneManagerScript.instance.LoadScene(currentGame);
-            else SceneManager.LoadScene(games[currentGame - 1]);
+            if (_tutorial)
+            {
+                SceneManagerScript.instance.LoadScene(currentGame);
+            }
+            else
+            {
+                SceneManager.LoadScene(games[currentGame - 1]);
+            }
+
         }
     }
     public void AddPoints(int pointsToAdd)
     {
-        points += pointsToAdd;
+        MainScored += pointsToAdd;
         Debug.Log($"+{pointsToAdd} pts");
     }
     public void Win()

@@ -12,7 +12,7 @@ public class HorneaMemesManager : MonoBehaviour
     [SerializeField] private float timerBetweenPhrases;
     [SerializeField] private float incorrectTimer;
     [SerializeField] private float numberOfMistakes;
-    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text _uiScore;
     [SerializeField] private TMP_Text minigameTimerText;
     [SerializeField] private TMP_Text originalPhrase;
     [SerializeField] private TMP_Text correct;
@@ -24,16 +24,22 @@ public class HorneaMemesManager : MonoBehaviour
     private PhraseData[] phraseData;
     private List<PhraseData> remainings;
     private PhraseData currentPhrase;
-    private int makeMemeScore;
+    private int _pointsCollected;
     private float correctAnswers;
     private float numberOfMistakesSet;
     private DifficultyValuesScriptableObject difficultyValues;
 
     private void Start()
     {
+        RefreshScore();
         phraseData = Resources.LoadAll<PhraseData>("Frases");
         remainings = new List<PhraseData>(phraseData);
-
+        numberOfMistakesSet = numberOfMistakes;
+        SetDifficulty();
+        InitializeValues();
+    }
+    public void SetDifficulty()
+    {
         foreach (DifficultyValuesScriptableObject values in GameManager.instance.minigamesDifficultyValues)
             if (values.minigameName == "MakeMeme")
                 difficultyValues = values;
@@ -45,11 +51,11 @@ public class HorneaMemesManager : MonoBehaviour
         foreach (MultipleValueVariable numberOfMistakes in difficultyValues.variables)
             if (numberOfMistakes.variableName == "numberOfMistakes")
                 this.numberOfMistakes = numberOfMistakes.value[GameManager.instance.currentRound - 1];
-
-        numberOfMistakesSet = numberOfMistakes;
-        InitializeValues();
     }
-
+    public void RefreshScore()
+    {
+        _uiScore.text = GameManager.instance.MainScored.ToString();
+    }
     private void Update()
     {
 
@@ -59,7 +65,7 @@ public class HorneaMemesManager : MonoBehaviour
         if (minigameTimer <= 0)
         {
             DisableButtons();
-            GameManager.instance.AddPoints(makeMemeScore);
+            GameManager.instance.AddPoints(_pointsCollected);
             GameManager.instance.LoadNewLevel();
 
         }
@@ -87,8 +93,8 @@ public class HorneaMemesManager : MonoBehaviour
     {
         AudioManager.AudioInstance.PlaySFX("bien");
         ClearListeners();
-        makeMemeScore += scoreIncrease;
-        scoreText.text = makeMemeScore.ToString();
+        _pointsCollected += scoreIncrease;
+        _uiScore.text = (_pointsCollected + GameManager.instance.MainScored).ToString();
         incompletePhrase.gameObject.SetActive(false);
         originalPhrase.gameObject.SetActive(true);
         correct.gameObject.SetActive(true);

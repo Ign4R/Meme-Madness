@@ -18,14 +18,14 @@ public class SiluememeManager : MonoBehaviour
     [SerializeField] private GameObject question;
     [SerializeField] private TMP_Text correct;
     [SerializeField] private TMP_Text incorrect;
-    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text _uiScore;
     [SerializeField] private TMP_Text minigameTimerText;
     [SerializeField] private CustomButton[] buttons;
     [SerializeField] private SpriteRenderer[] buttonsSprites;
 
     private GuessBase currentGuess;
     private int correctGuesses;
-    private int sillouetteScore;
+    private int _pointsCollected;
     private DifficultyValuesScriptableObject difficultyValues;
 
 
@@ -33,6 +33,13 @@ public class SiluememeManager : MonoBehaviour
     {
         
         _base = Resources.LoadAll<GuessBase>("Siluetas");
+        SetDifficulty();
+        RefreshScore();
+        AssigningValues();
+        Invoke(nameof(RemoveQuestion), questionTimer);
+    }
+    public void SetDifficulty()
+    {
 
         foreach (DifficultyValuesScriptableObject values in GameManager.instance.minigamesDifficultyValues)
             if (values.minigameName == "Silouette")
@@ -42,10 +49,11 @@ public class SiluememeManager : MonoBehaviour
             if (val.variableName == "maxGuessCount")
                 maxCorrectGuesses = val.value[GameManager.instance.currentRound - 1];
 
-        AssigningValues();
-        Invoke(nameof(RemoveQuestion), questionTimer);
     }
-
+    public void RefreshScore()
+    {
+        _uiScore.text = GameManager.instance.MainScored.ToString();
+    }
     private void Update()
     {
         minigameTimer -= Time.deltaTime;
@@ -54,7 +62,7 @@ public class SiluememeManager : MonoBehaviour
         if(minigameTimer <= 0)
         {
             DisableButtons();
-            GameManager.instance.AddPoints(sillouetteScore);
+            GameManager.instance.AddPoints(_pointsCollected);
             GameManager.instance.LoadNewLevel();
 
         }
@@ -75,8 +83,8 @@ public class SiluememeManager : MonoBehaviour
     {
         ClearListeners();
         AudioManager.AudioInstance.PlaySFX("bien");
-        sillouetteScore += scoreIncrease;
-        scoreText.text = sillouetteScore.ToString();
+        _pointsCollected += scoreIncrease;
+        _uiScore.text = (_pointsCollected + GameManager.instance.MainScored).ToString();
         normalImage.gameObject.SetActive(true);
         silhouette.gameObject.SetActive(false);
         correct.gameObject.SetActive(true);
@@ -102,18 +110,7 @@ public class SiluememeManager : MonoBehaviour
 
     public void NextGuess()
     {
-        //if (correctGuesses == maxCorrectGuesses)
-        //{
-        //    correctGuesses = 0;
-        //    //pasar al proximo minijuego
-        //}
-        //else
-        //{
-        //    silhouette.gameObject.SetActive(true);
-        //    normalImage.gameObject.SetActive(false);
-        //    correct.gameObject.SetActive(false);
-        //    AssigningValues();
-        //}
+
         EnableButtons();
         silhouette.gameObject.SetActive(true);
         normalImage.gameObject.SetActive(false);

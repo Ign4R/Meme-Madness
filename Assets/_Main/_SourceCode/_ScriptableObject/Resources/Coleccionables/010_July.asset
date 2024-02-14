@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 10
   isUnlocked: 0
-  normalMeme: {fileID: 21300000, guid: 7f3e15b9f4800f6488eb050d30f80232, type: 3}
-  sihouetteMeme: {fileID: 21300000, guid: 6c55620e92c354540817178a29e4f493, type: 3}
+  normalMeme: {fileID: 21300000, guid: cd924489db04ec741ae32be7fcfce877, type: 3}
+  sihouetteMeme: {fileID: 21300000, guid: 6235c11ea0360514081de8735b861aba, type: 3}

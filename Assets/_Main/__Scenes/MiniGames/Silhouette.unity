@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 571551964}
   - component: {fileID: 571551963}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1442,7 +1442,7 @@ MonoBehaviour:
   question: {fileID: 707271007}
   correct: {fileID: 1009806486}
   incorrect: {fileID: 514302031}
-  scoreText: {fileID: 1461438774}
+  _uiScore: {fileID: 1461438774}
   minigameTimerText: {fileID: 1132192236}
   buttons:
   - {fileID: 1310782795}
@@ -2018,7 +2018,7 @@ GameObject:
   - component: {fileID: 1461438773}
   - component: {fileID: 1461438774}
   m_Layer: 5
-  m_Name: Points
+  m_Name: ScoreValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
