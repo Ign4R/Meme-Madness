@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public bool isWin;
     public int currentRound;
     public int MainScored { get; private set; }
-    public int ScoreSaved { get; private set; }
+    public int RewardPoints { get; private set; } ///Puntos de canje
 
 
     public bool isPaused = false;
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.H) &&  SceneManagerScript.instance.scene != 0)
         {
             LoadNewLevel();
         }
@@ -136,10 +136,10 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         SceneManagerScript.instance.LoadScene(0);
     }
-    public void SavedScore()
+    public void AddRewardPoints()
     {
-        ScoreSaved = MainScored;
-
+        RewardPoints += MainScored;
+        MainScored = 0;
     }
     public void Pause()
     {

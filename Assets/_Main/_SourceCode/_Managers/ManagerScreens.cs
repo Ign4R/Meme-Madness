@@ -7,7 +7,8 @@ public class ManagerScreens : MonoBehaviour
     [SerializeField] private GameObject _mainMenu;
     [SerializeField] private GameObject _gameOverScreen;
     [SerializeField] private GameObject _winGameScreen;
-    [SerializeField] private TextMeshProUGUI _uiScoreWin;
+    [SerializeField] private TextMeshProUGUI _uiPointsWin;
+    [SerializeField] private TextMeshProUGUI _uiRewardsPoints;
     [SerializeField] private GameObject[] _rounds= new GameObject[2];
 
     private void Start()
@@ -19,8 +20,9 @@ public class ManagerScreens : MonoBehaviour
         }
         if (GameManager.instance.isWin)
         {
-            GameManager.instance.SavedScore();
+            GameManager.instance.AddRewardPoints();
             ShowInfoGameWin();
+           
         }
        
     }
@@ -37,11 +39,13 @@ public class ManagerScreens : MonoBehaviour
             }
         }
     }
+
     public void ShowInfoGameWin()
-    {     
-        _uiScoreWin.text= GameManager.instance.ScoreSaved.ToString();
+    {
+        _uiPointsWin.text = GameManager.instance.RewardPoints.ToString();
         _mainMenu.SetActive(false);
         _winGameScreen.SetActive(true);
+        _uiRewardsPoints.text = _uiPointsWin.text;
         
     }
     public void BackMenu()
