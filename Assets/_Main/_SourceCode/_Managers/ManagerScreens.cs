@@ -53,5 +53,11 @@ public class ManagerScreens : MonoBehaviour
         GameManager.instance.ResetRoundAndGame();
         _mainMenu.SetActive(true);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quit game");
+    }
 }
 

@@ -33,12 +33,12 @@ RectTransform:
   m_Children:
   - {fileID: 2245592929364607153}
   m_Father: {fileID: 7531104527598319906}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 301.7802, y: -261.35852}
-  m_SizeDelta: {x: 252.2704, y: 84.5171}
+  m_AnchoredPosition: {x: 303.36, y: -261.35852}
+  m_SizeDelta: {x: 249.11, y: 84.5171}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3747851464176549301
 CanvasRenderer:
@@ -239,8 +239,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5740134388538808041}
-  - {fileID: 1725907432908960138}
   - {fileID: 1758424068190684695}
+  - {fileID: 1725907432908960138}
   m_Father: {fileID: 7400442878938792016}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -297,6 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGame: 0
   isDefeat: 0
+  isWin: 0
   currentRound: 1
   isPaused: 0
   games:
@@ -344,7 +345,7 @@ RectTransform:
   m_Children:
   - {fileID: 4589903781574844350}
   m_Father: {fileID: 7531104527598319906}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}

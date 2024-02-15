@@ -155,9 +155,5 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void ExitGame()
-    {
-        Application.Quit();
-        Debug.Log("Quit game");
-    }
+   
 }
