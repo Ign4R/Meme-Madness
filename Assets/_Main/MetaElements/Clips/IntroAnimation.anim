@@ -925,7 +925,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 35.983334
-    functionName: NextScene
+    functionName: PlayGame
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

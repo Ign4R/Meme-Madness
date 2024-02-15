@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class HorneaMemesManager : MonoBehaviour
+public class HorneaElMeme : MonoBehaviour
 {
+    [SerializeField] private GameObject _transition;
     [SerializeField] private float maxCorrectAnswers;
     [SerializeField] private int scoreIncrease=10;
     [SerializeField] private float minigameTimer;
@@ -31,10 +31,10 @@ public class HorneaMemesManager : MonoBehaviour
 
     private void Start()
     {
+        _transition.SetActive(true);
         RefreshScore();
         phraseData = Resources.LoadAll<PhraseData>("Frases");
         remainings = new List<PhraseData>(phraseData);
-        numberOfMistakesSet = numberOfMistakes;
         SetDifficulty();
         InitializeValues();
     }
@@ -51,6 +51,7 @@ public class HorneaMemesManager : MonoBehaviour
         foreach (MultipleValueVariable numberOfMistakes in difficultyValues.variables)
             if (numberOfMistakes.variableName == "numberOfMistakes")
                 this.numberOfMistakes = numberOfMistakes.value[GameManager.instance.currentRound - 1];
+       
     }
     public void RefreshScore()
     {
@@ -58,16 +59,17 @@ public class HorneaMemesManager : MonoBehaviour
     }
     private void Update()
     {
-
-        minigameTimer -= Time.deltaTime;
-        int seconds = Mathf.FloorToInt(minigameTimer % 60);
-        minigameTimerText.text = seconds.ToString();
-        if (minigameTimer <= 0)
+        if (minigameTimer >= 0)
+        {
+            minigameTimer -= Time.deltaTime;
+            int seconds = Mathf.FloorToInt(minigameTimer % 60);
+            minigameTimerText.text = seconds.ToString();
+        }
+        else
         {
             DisableButtons();
             GameManager.instance.AddPoints(_pointsCollected);
             GameManager.instance.LoadNewLevel();
-
         }
     }
 
@@ -135,6 +137,7 @@ public class HorneaMemesManager : MonoBehaviour
 
     public void InitializeValues()
     {
+        numberOfMistakesSet = numberOfMistakes;
         currentPhrase = GetRandomPhrase();
         memeImage.sprite = currentPhrase.MemeImage;
         incompletePhrase.text = currentPhrase.IncompletePhrase;

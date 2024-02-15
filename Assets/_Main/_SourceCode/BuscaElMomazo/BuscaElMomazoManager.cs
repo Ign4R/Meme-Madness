@@ -6,6 +6,7 @@ using TMPro;
 
 public class BuscaElMomazoManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _transition;
     private int counter;
     public Vector2 posMemesEnemies;
     [SerializeField] private List<MemeSlot> _slotPrefabs;
@@ -29,7 +30,7 @@ public class BuscaElMomazoManager : MonoBehaviour
     public List<Meme> memes = new List<Meme>();
     public List<MemeSlot> memeSlots = new List<MemeSlot>();
     private DifficultyValuesScriptableObject difficultyValues;
-    private int _pointsCollected;
+    private int _pointsCollected=0;
 
     private void Awake()
     {
@@ -46,6 +47,7 @@ public class BuscaElMomazoManager : MonoBehaviour
 
     private void Start()
     {
+        _transition.SetActive(true);
         RefreshScore();
         SetDifficulty();
         Spawn();

@@ -7,21 +7,34 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public int currentGame;
     private bool _tutorial;
+    public bool isDefeat;
+    public bool isWin;
     public int currentRound;
     public int MainScored { get; private set; }
+    public int ScoreSaved { get; private set; }
+
+
     public bool isPaused = false;
     public List<string> games;
     public DifficultyValuesScriptableObject[] minigamesDifficultyValues;
     [SerializeField] private GameObject pauseMenu;
-    public int[] scorePerRound;
 
-    private void Start()
+    public int[] scorePerRound;
+    private void Awake()
     {
-        if (instance == null) instance = this;
-        else Destroy(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         DontDestroyOnLoad(gameObject);
         _tutorial = true;
     }
+
 
     private void Update()
     {
@@ -65,6 +78,7 @@ public class GameManager : MonoBehaviour
     }
     public void LoadNewLevel()
     {
+       
         if (currentGame == 4)        //En la ronda 1, los minijuegos se juegan en orden.
         {               
             if (MainScored >= scorePerRound[currentRound - 1])
@@ -73,7 +87,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene("GameOver");
+                GameOver();
             }
         }
         else
@@ -87,7 +101,6 @@ public class GameManager : MonoBehaviour
             {
                 SceneManager.LoadScene(games[currentGame - 1]);
             }
-
         }
     }
     public void AddPoints(int pointsToAdd)
@@ -98,30 +111,35 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         Debug.Log("Game over");
-        currentGame = 0;
-        currentRound = 1;
         _tutorial = true;
-        SceneManager.LoadScene(5);
+        isWin = true;
+        SceneManagerScript.instance.LoadScene(0);
     }
     public void GameOver()
     {
         Debug.Log("Game over");
-        currentGame = 0;
-        currentRound = 1;
+        isDefeat = true;
         _tutorial = true;
-        SceneManager.LoadScene(6);
-
+        SceneManagerScript.instance.LoadScene(0);
     }
-    public void LoadMainMenu() => SceneManagerScript.instance.LoadScene(0);
-
-    public void ResetPause()
+    public void ResetRoundAndGame()
     {
         currentGame = 0;
         currentRound = 1;
-        isPaused = false;
-        _tutorial = true;
-        pauseMenu.SetActive(false);
+    }
+    public void LoadMainMenu() ///Lo utiliza el boton pausa
+    {
+        ResetRoundAndGame();
         Time.timeScale = 1;
+        _tutorial = true;
+        currentRound = 1;
+        pauseMenu.SetActive(false);
+        SceneManagerScript.instance.LoadScene(0);
+    }
+    public void SavedScore()
+    {
+        ScoreSaved = MainScored;
+
     }
     public void Pause()
     {

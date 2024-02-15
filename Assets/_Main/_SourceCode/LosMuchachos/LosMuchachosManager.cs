@@ -6,32 +6,38 @@ using Debug = UnityEngine.Debug;
 
 public class LosMuchachosManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _transition;
     public Animator _anim;
     private static bool SHOW_CONTROLS;
-    public GameObject _controls;    
-    public static LosMuchachosManager instance;
+    public GameObject _controls;
     public float remainingTime;
     [SerializeField] private int _scoreIncrease = 50;
-    private float _objective;
     [SerializeField] private TextMeshProUGUI _uiScore;
     public DifficultyValuesScriptableObject difficultyValues;
     [SerializeField] BensonController benson;
     [SerializeField] private Slider sliderTimer;
     public int _pointsCollected;
 
+    public static LosMuchachosManager Instance { get ; set ; }
     private void Awake()
-    {     
-        if (SHOW_CONTROLS)
+    {
+        if (Instance == null)
         {
-            _anim.enabled = false;
-        }    
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     private void Start()
     {
-     
-        if (instance == null) instance = this;
-        else Destroy(gameObject);
+        if (SHOW_CONTROLS)
+        {
+            _anim.enabled = false;
+        }
 
+        _transition.SetActive(true);
         FillSlide();
         SetDifficulty();
         RefreshScore();

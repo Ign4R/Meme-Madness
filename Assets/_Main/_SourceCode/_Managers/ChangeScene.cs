@@ -4,8 +4,22 @@ using UnityEngine;
 
 public class ChangeScene : MonoBehaviour
 {
-    public void NextScene()
+    private void Start()
+    {
+    
+    }
+    public void PlayGame()
     {
         GameManager.instance.LoadNewLevel();
+    }
+
+    public void Win()
+    {
+
+    }
+
+    public void GameOver()
+    {
+        
     }
 }

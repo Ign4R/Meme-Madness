@@ -22,7 +22,7 @@ public class BensonController : MonoBehaviour
     [SerializeField] private float timerStep = 3f;
     private bool activateSpawner;
     private static bool END_TIME_TUTORIAL;
-    private float timeSinceLastSpawn;
+    private float lastSpawnTime;
 
     public bool EndTimeTutorial { get => END_TIME_TUTORIAL; set => END_TIME_TUTORIAL = value; }
 
@@ -62,13 +62,13 @@ public class BensonController : MonoBehaviour
     {
         if (activateSpawner) 
         {
-            timeSinceLastSpawn -= Time.deltaTime;
+            float timeSinceLastSpawn = Time.time - lastSpawnTime;
 
-
-            if (timeSinceLastSpawn < 1) 
+            if (timeSinceLastSpawn >= ballSpawnCd)
             {
                 SpawnBall();
                 AudioManager.AudioInstance.PlaySFX("spamball");
+                lastSpawnTime = Time.time;  // Actualizar el tiempo de la última activación
             }
         }
         
@@ -76,13 +76,12 @@ public class BensonController : MonoBehaviour
 
     private void SpawnBall()
     {
-        timeSinceLastSpawn = ballSpawnCd;
-        var r = Random.Range(0, 10);
-        if (r < 5)
+        var r = Random.Range(0, 4);
+        if (r <= 2)
         {
             GameObject newBlueBall = Instantiate(blueBallPrefab, ballSpawnPointRef.transform.position, ballSpawnPointRef.transform.rotation);
         }
-        else if (r > 5)
+        else if (r > 2)
         {
             GameObject newOrangeBall = Instantiate(orangeBallPrefab, ballSpawnPointRef.transform.position, ballSpawnPointRef.transform.rotation);
         }

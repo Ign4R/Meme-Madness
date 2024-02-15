@@ -44,5 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eadf70129c628444b5f4d655f86b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colectablesObjects: []
   colectablesMenu: {fileID: 0}
+  unlockablePrefab: {fileID: 8160575216778754935, guid: 4a703b49b890b514f9c896506694b4a9, type: 3}
+  arrays:
+    colectablesId: 
+    remainingUnlocks: 
+    colectablesIsUnlocked: 

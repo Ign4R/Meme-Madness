@@ -6,6 +6,7 @@ using TMPro;
 
 public class SiluememeManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _transition;
     private GuessBase[] _base;
     [SerializeField] private float maxCorrectGuesses;
     [SerializeField] private float minigameTimer;
@@ -31,7 +32,7 @@ public class SiluememeManager : MonoBehaviour
 
     private void Start()
     {
-        
+        _transition.SetActive(true);
         _base = Resources.LoadAll<GuessBase>("Siluetas");
         SetDifficulty();
         RefreshScore();
@@ -56,10 +57,13 @@ public class SiluememeManager : MonoBehaviour
     }
     private void Update()
     {
-        minigameTimer -= Time.deltaTime;
-        int seconds = Mathf.FloorToInt(minigameTimer % 60);
-        minigameTimerText.text = seconds.ToString();
-        if(minigameTimer <= 0)
+        if (minigameTimer >= 0)
+        {
+            minigameTimer -= Time.deltaTime;
+            int seconds = Mathf.FloorToInt(minigameTimer % 60);
+            minigameTimerText.text = seconds.ToString();
+        }
+        else
         {
             DisableButtons();
             GameManager.instance.AddPoints(_pointsCollected);

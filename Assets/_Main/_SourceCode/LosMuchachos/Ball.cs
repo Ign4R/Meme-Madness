@@ -6,7 +6,7 @@ public class Ball : MonoBehaviour
 
     private void Start()
     {
-        foreach (MultipleValueVariable val in LosMuchachosManager.instance.difficultyValues.variables)
+        foreach (MultipleValueVariable val in LosMuchachosManager.Instance.difficultyValues.variables)
             if (val.variableName == "fallSpeed") fallSpeed = val.value[GameManager.instance.currentRound - 1];
     }
     
@@ -14,7 +14,7 @@ public class Ball : MonoBehaviour
 
     protected void Collided(bool withPlayer)
     {
-        if(withPlayer) LosMuchachosManager.instance.CaughtSuccess();
+        if(withPlayer) LosMuchachosManager.Instance.CaughtSuccess();
         Destroy(gameObject);
     }
 }

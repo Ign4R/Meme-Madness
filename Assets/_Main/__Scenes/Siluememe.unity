@@ -384,8 +384,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Incorrecto
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0bdea3bb74b30254a86a13bcb8860a89, type: 2}
+  m_sharedMaterial: {fileID: 8794253445195865365, guid: 0bdea3bb74b30254a86a13bcb8860a89, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -409,7 +409,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.75
+  m_fontSize: 32.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &571551961
@@ -874,8 +874,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Correcto
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0bdea3bb74b30254a86a13bcb8860a89, type: 2}
+  m_sharedMaterial: {fileID: 8794253445195865365, guid: 0bdea3bb74b30254a86a13bcb8860a89, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -899,7 +899,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.75
+  m_fontSize: 36.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1413,7 +1413,7 @@ GameObject:
   - component: {fileID: 1135256552}
   - component: {fileID: 1135256551}
   m_Layer: 0
-  m_Name: Level_Manager
+  m_Name: MINIGAME_MANAGER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1431,6 +1431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0900f083e6c924898f1aa6578e56f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _transition: {fileID: 1653675686}
   maxCorrectGuesses: 4
   minigameTimer: 22
   timerBetweenGuesses: 0.5
@@ -2515,10 +2516,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 662367096306450285, guid: 65d397dc0134fd74f858f3012ec900dd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65d397dc0134fd74f858f3012ec900dd, type: 3}
+--- !u!1 &1653675686 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 662367096306450285, guid: 65d397dc0134fd74f858f3012ec900dd, type: 3}
+  m_PrefabInstance: {fileID: 1653675685}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1741347797
 GameObject:
   m_ObjectHideFlags: 0
