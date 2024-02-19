@@ -44,9 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eadf70129c628444b5f4d655f86b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colectablesMenu: {fileID: 0}
+  colectablesMenu: {fileID: 6316243196994662215, guid: d636832b7ee463341acb1563d134b850, type: 3}
   unlockablePrefab: {fileID: 8160575216778754935, guid: 4a703b49b890b514f9c896506694b4a9, type: 3}
+  rewardPointsText: {fileID: 3511862850052451268, guid: a81120b4a7e6ad24cb220e0fa81571c9, type: 3}
   arrays:
-    colectablesId: 
-    remainingUnlocks: 
-    colectablesIsUnlocked: 
+    score: 600
+    colectablesId: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a000000
+    remainingUnlocks: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a000000
+    colectablesIsUnlocked: 0000000000000000000000

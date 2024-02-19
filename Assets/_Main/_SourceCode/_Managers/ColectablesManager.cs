@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [Serializable]
 public class ColectablesArrays 
 {
+    public int score;
     public int[] colectablesId;
     public int[] remainingUnlocks;
     public bool[] colectablesIsUnlocked;
@@ -14,8 +16,10 @@ public class ColectablesManager : MonoBehaviour
 {
     public static ColectablesManager instance;
     [SerializeField] private GameObject colectablesMenu; 
+    [SerializeField] private GameObject purchaseUnlockableMenu; 
     [SerializeField] private Unlockable unlockablePrefab;
-    private Image[] colectablesObjects; 
+    [SerializeField] private TMP_Text rewardPointsText;
+    private Unlockable[] colectablesObjects; 
     private ColectablesSo[] colectables;
     public ColectablesArrays arrays = new();
 
@@ -28,7 +32,7 @@ public class ColectablesManager : MonoBehaviour
         colectables = Resources.LoadAll<ColectablesSo>("Coleccionables");
         Initialization();
         AssingDefaultValues();
-        AssingImages();
+        InitializeImages();
         ResetColectablesMenu();
 
 
@@ -54,13 +58,14 @@ public class ColectablesManager : MonoBehaviour
         arrays.remainingUnlocks = arrays.colectablesId;
     }
 
-    public void AssingImages()
+    public void InitializeImages()
     {
-        colectablesObjects = new Image[colectables.Length];
+        colectablesObjects = new Unlockable[colectables.Length];
         for (int i = 0; i < colectables.Length; i++)
         {
             var aux = Instantiate(unlockablePrefab, colectablesMenu.transform);
-            colectablesObjects[i] = aux.image;
+            colectablesObjects[i] = aux;
+            colectablesObjects[i].id = i;
         }
     }
 
@@ -75,13 +80,32 @@ public class ColectablesManager : MonoBehaviour
         {
             if(arrays.colectablesIsUnlocked[i] == false)
             {
-                colectablesObjects[i].sprite = colectables[i].sihouetteMeme;
+                colectablesObjects[i].image.sprite = colectables[i].sihouetteMeme;
             }
             else
             {
-                colectablesObjects[i].sprite = colectables[i].normalMeme;
+                colectablesObjects[i].image.sprite = colectables[i].normalMeme;
             }
         }
+        GameManager.instance.RewardPoints = arrays.score;
+        rewardPointsText.text = arrays.score.ToString();
+    }
+
+    public void ShowUnlockableInfo()
+    {
+        purchaseUnlockableMenu.SetActive(true);
+    }
+
+    public void CloseUnlockableInfo()
+    {
+        purchaseUnlockableMenu.SetActive(false);
+
+    }
+
+    public void ObjectsReference(GameObject colectablesMenu, TMP_Text rewardPointsText)
+    {
+        this.colectablesMenu = colectablesMenu;
+        this.rewardPointsText = rewardPointsText;
     }
 
     public void Save()
@@ -92,6 +116,7 @@ public class ColectablesManager : MonoBehaviour
     public void Load()
     {
         ColectableData loadedArrays = SaveAndLoad.LoadColectables();
+        arrays.score = loadedArrays.score;
         arrays.colectablesId = loadedArrays.id;
         arrays.colectablesIsUnlocked = loadedArrays.isUnlocked;
         arrays.remainingUnlocks = loadedArrays.remainingUnlocks;

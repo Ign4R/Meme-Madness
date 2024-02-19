@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public bool isWin;
     public int currentRound;
     public int MainScored { get; private set; }
-    public int RewardPoints { get; private set; } ///Puntos de canje
+    public int RewardPoints { get; set; } ///Puntos de canje
 
 
     public bool isPaused = false;
@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         _tutorial = true;
+        
     }
 
 

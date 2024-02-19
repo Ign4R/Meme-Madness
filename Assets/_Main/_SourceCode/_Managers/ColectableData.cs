@@ -5,12 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class ColectableData
 {
+    public int score;
     public int[] id;
     public int[] remainingUnlocks;
     public bool[] isUnlocked;
 
     public ColectableData(ColectablesArrays arrays)
     {
+        this.score = arrays.score;
         id = new int[arrays.colectablesId.Length];
         remainingUnlocks = new int[arrays.remainingUnlocks.Length];
         isUnlocked = new bool[arrays.colectablesIsUnlocked.Length];
