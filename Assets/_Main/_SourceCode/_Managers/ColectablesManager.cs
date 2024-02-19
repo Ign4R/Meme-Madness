@@ -17,10 +17,13 @@ public class ColectablesManager : MonoBehaviour
     public static ColectablesManager instance;
     [SerializeField] private GameObject colectablesMenu; 
     [SerializeField] private GameObject purchaseUnlockableMenu; 
+    [SerializeField] private GameObject notEnoughScore; 
     [SerializeField] private Unlockable unlockablePrefab;
     [SerializeField] private TMP_Text rewardPointsText;
     private Unlockable[] colectablesObjects; 
     private ColectablesSo[] colectables;
+    private int unlockableIdButton;
+    private int price;
     public ColectablesArrays arrays = new();
 
     private void Awake()
@@ -91,21 +94,40 @@ public class ColectablesManager : MonoBehaviour
         rewardPointsText.text = arrays.score.ToString();
     }
 
-    public void ShowUnlockableInfo()
+    public void ShowUnlockableInfo(int unlockableIdButton, int price)
     {
+        this.unlockableIdButton = unlockableIdButton;
+        this.price = price;
+        if (arrays.colectablesIsUnlocked[unlockableIdButton] == true) return;
         purchaseUnlockableMenu.SetActive(true);
     }
 
     public void CloseUnlockableInfo()
     {
+        notEnoughScore.SetActive(false);
         purchaseUnlockableMenu.SetActive(false);
-
     }
 
-    public void ObjectsReference(GameObject colectablesMenu, TMP_Text rewardPointsText)
+    public void PurchaseColectable()
+    {
+        if(arrays.score < price)
+        {
+            notEnoughScore.SetActive(true);
+            return;
+        }
+        arrays.score -= price;
+        arrays.colectablesIsUnlocked[unlockableIdButton] = true;
+        ResetColectablesMenu();
+        CloseUnlockableInfo();
+    }
+
+
+    public void ObjectsReference(GameObject colectablesMenu, GameObject purchaseUnlockableMenu, GameObject notEnoughScore, TMP_Text rewardPointsText)
     {
         this.colectablesMenu = colectablesMenu;
+        this.purchaseUnlockableMenu = purchaseUnlockableMenu;
         this.rewardPointsText = rewardPointsText;
+        this.notEnoughScore = notEnoughScore;
     }
 
     public void Save()

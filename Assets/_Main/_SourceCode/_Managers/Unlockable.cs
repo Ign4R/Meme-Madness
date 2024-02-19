@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Unlockable : MonoBehaviour
 {
     public int id;
+    public int price;
     public Image image;
     private Button button;
 
@@ -16,7 +17,7 @@ public class Unlockable : MonoBehaviour
 
     private void OnEnable()
     {
-        button.onClick.AddListener(ColectablesManager.instance.ShowUnlockableInfo);
+        button.onClick.AddListener(delegate { ColectablesManager.instance.ShowUnlockableInfo(id, price); });
     }
 
     private void OnDisable()

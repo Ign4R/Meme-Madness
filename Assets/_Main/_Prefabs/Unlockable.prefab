@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  price: 2000
   image: {fileID: 6718703942527670450}
 --- !u!114 &6665222020138461033
 MonoBehaviour:
