@@ -12,7 +12,7 @@ public class ColectableData
 
     public ColectableData(ColectablesArrays arrays)
     {
-        this.score = arrays.score;
+        this.score = arrays.SCORE_SAVED_APPLICATION;
         id = new int[arrays.colectablesId.Length];
         remainingUnlocks = new int[arrays.remainingUnlocks.Length];
         isUnlocked = new bool[arrays.colectablesIsUnlocked.Length];

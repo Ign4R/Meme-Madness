@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class Unlockable : MonoBehaviour
     public int price;
     public Image image;
     private Button button;
+    public TextMeshProUGUI uiPrice;
 
     private void Awake()
     {
@@ -17,7 +19,8 @@ public class Unlockable : MonoBehaviour
 
     private void OnEnable()
     {
-        button.onClick.AddListener(delegate { ColectablesManager.instance.ShowUnlockableInfo(id, price); });
+        uiPrice.text = price.ToString();    
+        button.onClick.AddListener(delegate { ColectablesManager.instance.PurchaseColectable(id, price); });
     }
 
     private void OnDisable()

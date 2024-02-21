@@ -40,7 +40,7 @@ public class SaveAndLoad
         }
         else
         {
-            Debug.LogError("Save file not found in" + path);   
+            Debug.LogWarning("File not found" + path);   
             return null;
         }
     }

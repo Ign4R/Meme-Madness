@@ -46,7 +46,7 @@ public class ManagerScreens : MonoBehaviour
         _mainMenu.SetActive(false);
         _winGameScreen.SetActive(true);
         _uiRewardsPoints.text = _uiPointsWin.text;
-        ColectablesManager.instance.arrays.score = GameManager.instance.RewardPoints;
+        ColectablesManager.instance.arrays.SCORE_SAVED_APPLICATION = GameManager.instance.RewardPoints;
         ColectablesManager.instance.Save();
         
     }
