@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a60be25e102ad07408079a5bf679d5ec, type: 3}
-  m_Name: 000_Shrek
+  m_Name: 001_Goku
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   isUnlocked: 0
-  normalMeme: {fileID: 21300000, guid: ef2eee773fe0eab45b039403d40e5c57, type: 3}
-  sihouetteMeme: {fileID: 21300000, guid: 980bc609225632c42a8320939f1517d3, type: 3}
+  price: 4000
+  normalMeme: {fileID: 21300000, guid: 2a66df976c2ae1941aaa0b12b85225e4, type: 3}
+  sihouetteMeme: {fileID: 21300000, guid: 32b52aeb81bf00b4e94fb7206e44df9a, type: 3}

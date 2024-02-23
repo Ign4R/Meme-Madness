@@ -7,6 +7,7 @@ public class ColectablesSo: ScriptableObject
 {
     public int id;
     public bool isUnlocked;
+    public int price;
     public Sprite normalMeme;
     public Sprite sihouetteMeme;
 }

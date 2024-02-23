@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a60be25e102ad07408079a5bf679d5ec, type: 3}
-  m_Name: 010_July
+  m_Name: 004_Robot
   m_EditorClassIdentifier: 
-  id: 10
+  id: 3
   isUnlocked: 0
-  normalMeme: {fileID: 21300000, guid: cd924489db04ec741ae32be7fcfce877, type: 3}
-  sihouetteMeme: {fileID: 21300000, guid: 6235c11ea0360514081de8735b861aba, type: 3}
+  price: 12000
+  normalMeme: {fileID: 21300000, guid: 22ba050a00270214db673802f58d79ef, type: 3}
+  sihouetteMeme: {fileID: 21300000, guid: ce549713dc93f504db78e70551ad141f, type: 3}

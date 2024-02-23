@@ -8087,18 +8087,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LayoutGroup
       objectReference: {fileID: 0}
-    - target: {fileID: 9209156909819675480, guid: d636832b7ee463341acb1563d134b850, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9209156909819675480, guid: d636832b7ee463341acb1563d134b850, type: 3}
-      propertyPath: m_Spacing.x
-      value: 49.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 9209156909819675480, guid: d636832b7ee463341acb1563d134b850, type: 3}
-      propertyPath: m_Padding.m_Left
-      value: 103
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d636832b7ee463341acb1563d134b850, type: 3}
 --- !u!1001 &5450145191550437474

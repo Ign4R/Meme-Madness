@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a60be25e102ad07408079a5bf679d5ec, type: 3}
-  m_Name: 009_Jefrey
+  m_Name: 003_Roca
   m_EditorClassIdentifier: 
-  id: 9
+  id: 2
   isUnlocked: 0
-  normalMeme: {fileID: 21300000, guid: a01ce5e8a86fb9e4ab9ebba1ab1d3f4b, type: 3}
-  sihouetteMeme: {fileID: 21300000, guid: 78246009b8b58b94f83c9daea07d8489, type: 3}
+  price: 8000
+  normalMeme: {fileID: 21300000, guid: c5ad5feb7119ede4baf48479737d703c, type: 3}
+  sihouetteMeme: {fileID: 21300000, guid: ba61f38badbf8344bb71f9d0d5d4e830, type: 3}

@@ -68,6 +68,7 @@ public class ColectablesManager : MonoBehaviour
             var aux = Instantiate(unlockablePrefab, colectablesMenu.transform);
             colectablesObjects[i] = aux;
             colectablesObjects[i].id = i;
+            colectablesObjects[i].price = colectables[i].price;
         }
     }
 
