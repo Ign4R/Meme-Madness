@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
     }
     public void Win()
     {
-        Debug.Log("Game over");
+        Debug.Log("Win Game");
         _tutorial = true;
         isWin = true;
         SceneManagerScript.instance.LoadScene(0);
@@ -122,6 +122,11 @@ public class GameManager : MonoBehaviour
         isDefeat = true;
         _tutorial = true;
         SceneManagerScript.instance.LoadScene(0);
+    }
+    public void ResetCondition()
+    {
+        isDefeat = false;
+        isWin = false;
     }
     public void ResetRoundAndGame()
     {

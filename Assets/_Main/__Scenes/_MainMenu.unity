@@ -3038,7 +3038,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47f1a7d8f76bf7047903bcec24f7a7b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notEnoughScore: {fileID: 768636935}
 --- !u!1 &1026456910
 GameObject:
   m_ObjectHideFlags: 0
@@ -7592,6 +7591,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2cb196336626f4297c191e86b53b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notEnoughScore: {fileID: 768636935}
+  colectablesMenu: {fileID: 468507585}
+  rewardPointsText: {fileID: 8871645462171394982}
   _transition: {fileID: 1121305801}
   _mainMenu: {fileID: 135500859}
   _gameOverScreen: {fileID: 1284301081}
@@ -9194,7 +9196,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7756866368119359402}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9688,7 +9690,7 @@ PrefabInstance:
     - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
       propertyPath: notEnoughScore
       value: 
-      objectReference: {fileID: 154235168}
+      objectReference: {fileID: 768636935}
     - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
       propertyPath: colectablesMenu
       value: 
@@ -9697,82 +9699,6 @@ PrefabInstance:
       propertyPath: rewardPointsText
       value: 
       objectReference: {fileID: 8871645462171394982}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: purchaseUnlockableMenu
-      value: 
-      objectReference: {fileID: 498680594}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.SCORE_SAVED_APPLICATION
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.colectablesId.Array.size
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.colectablesId.Array.data[4]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.colectablesId.Array.data[5]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.colectablesId.Array.data[6]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.colectablesId.Array.data[7]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.colectablesId.Array.data[8]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.colectablesId.Array.data[9]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.remainingUnlocks.Array.size
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.colectablesId.Array.data[10]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.remainingUnlocks.Array.data[4]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.remainingUnlocks.Array.data[5]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.remainingUnlocks.Array.data[6]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.remainingUnlocks.Array.data[7]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.remainingUnlocks.Array.data[8]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.remainingUnlocks.Array.data[9]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.remainingUnlocks.Array.data[10]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072420221353412764, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
-      propertyPath: arrays.colectablesIsUnlocked.Array.size
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 5543529001849269028, guid: 54084f0781802f7438a2bccf4dbd3b58, type: 3}
       propertyPath: m_RootOrder
       value: 6

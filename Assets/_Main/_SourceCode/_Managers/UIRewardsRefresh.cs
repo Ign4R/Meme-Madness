@@ -5,14 +5,7 @@ using UnityEngine;
 
 public class UIRewardsRefresh : MonoBehaviour
 {
-    [SerializeField] private GameObject notEnoughScore;
 
-
-    private void Start()
-    {
-        ColectablesManager.instance.ObjectsReference(notEnoughScore);
-    }
-    
     public void CloseUnlockableInfo()
     {
         ColectablesManager.instance.CloseUnlockableInfo();

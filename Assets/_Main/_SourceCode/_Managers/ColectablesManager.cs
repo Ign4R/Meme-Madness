@@ -19,38 +19,44 @@ public class ColectablesManager : MonoBehaviour
     [SerializeField] private GameObject notEnoughScore; 
     [SerializeField] private Unlockable unlockablePrefab;
     [SerializeField] private TMP_Text rewardPointsText;
-    private Unlockable[] colectablesObjects; 
-    private ColectablesSo[] colectables;
     private int unlockableIdButton;
     private int price;
     public ColectablesArrays arrays = new();
+    private  Unlockable[] colectablesObjects;
+    private ColectablesSo[] colectables;
+
+
+    public ColectablesSo[] Colectables { get => colectables; set => colectables = value; }
 
     private void Awake()
     {
-        if (instance == null) instance = this;
+        if (instance == null) 
+        { 
+            instance = this;
+            //colectablesObjects = null;
+        }
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
-
         colectables = Resources.LoadAll<ColectablesSo>("Coleccionables");
-        Initialization();
-        AssingDefaultValues();
-        InitializeImages();
-        ResetColectablesMenu();
+
 
 
     }
-
-    private void Initialization()
+    private void Start()
+    {
+ 
+    }
+    public void Initialization()
     {
         arrays.colectablesId = new int[colectables.Length];
         arrays.remainingUnlocks = new int[colectables.Length];
         arrays.colectablesIsUnlocked = new bool[colectables.Length];
-        
+
     }
 
-    private void AssingDefaultValues()
+    public void AssingDefaultValues()
     {
-        
+        colectablesObjects = new Unlockable[colectables.Length];
         for (int i = 0; i < colectables.Length; i++)
         {
             arrays.colectablesId[i] = colectables[i].id;
@@ -58,11 +64,14 @@ public class ColectablesManager : MonoBehaviour
 
         }
         arrays.remainingUnlocks = arrays.colectablesId;
+
     }
 
     public void InitializeImages()
     {
-        colectablesObjects = new Unlockable[colectables.Length];
+        Debug.LogWarning("SE INSTANCIO");
+
+
         for (int i = 0; i < colectables.Length; i++)
         {
             var aux = Instantiate(unlockablePrefab, colectablesMenu.transform);
@@ -81,7 +90,7 @@ public class ColectablesManager : MonoBehaviour
     {
         for (int i = 0; i < colectablesObjects.Length; i++)
         {
-            if(arrays.colectablesIsUnlocked[i] == false)
+            if (arrays.colectablesIsUnlocked[i] == false)
             {
                 colectablesObjects[i].image.sprite = colectables[i].sihouetteMeme;
             }
@@ -117,26 +126,33 @@ public class ColectablesManager : MonoBehaviour
                 CloseUnlockableInfo();
             }
         }
-     
-       
+         
     }
 
-
-    public void ObjectsReference(/*GameObject colectablesMenu, GameObject purchaseUnlockableMenu, */GameObject notEnoughScore/*, TMP_Text rewardPointsText*/)
+    public void ObjectsReference(GameObject colectablesMenu, GameObject notEnoughScore, TMP_Text rewardPointsText)
     {
-        //this.colectablesMenu = colectablesMenu;
-        //this.purchaseUnlockableMenu = purchaseUnlockableMenu;
-        //this.rewardPointsText = rewardPointsText;
+        this.colectablesMenu = colectablesMenu;
+        this.rewardPointsText = rewardPointsText;
         this.notEnoughScore = notEnoughScore;
+
+
     }
 
     public void Save()
     {
-        SaveAndLoad.SaveColectables(arrays);
+        SaveAndLoad.SaveColectables(arrays, colectablesObjects);
     }
+    public void ReloadColectable()
+    {
 
+    }
     public void Load()
     {
+        if (colectablesObjects == null)
+        {
+            print("set colect");
+            colectablesObjects = SaveAndLoad.Unlockeables;
+        }
         ColectableData loadedArrays = SaveAndLoad.LoadColectables();
         if ( loadedArrays != null )
         {

@@ -4,16 +4,21 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveAndLoad
 {
+    private static Unlockable[] _unlockeables;
     private static string path = Application.persistentDataPath + "/colectables.data";
     private static BinaryFormatter formatter;
     private static FileStream create;
     private static FileStream open;
+
+    public static Unlockable[] Unlockeables { get => _unlockeables; set => _unlockeables = value; }
+
     /// <summary>
     /// Save Colectables Unlocked to a file.
     /// </summary>
     /// <param name="arrays"></param>
-    public static void SaveColectables(ColectablesArrays arrays)
+    public static void SaveColectables(ColectablesArrays arrays, Unlockable[] unlockables)
     {
+        _unlockeables = unlockables;
         formatter = new BinaryFormatter();
         create = new FileStream(path, FileMode.Create);
         ColectableData data = new ColectableData(arrays);
